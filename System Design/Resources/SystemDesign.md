@@ -1,5 +1,3 @@
-### Nội dung tập tin `system-design-complete.md`
-
 # Tài Liệu Tổng Hợp Kiến Thức Thiết Kế Hệ Thống (System Design)
 *Dựa trên tài liệu System Design Interview của Alex Xu*
 
@@ -65,6 +63,7 @@ graph TD
         LB -->|Private IP| WS2[Web Server 2]
         LB -->|Private IP| WS3[Web Server 3]
     end
+
 ```
 
 ### 4. Tối ưu hóa hiệu năng: Cache và CDN
@@ -163,28 +162,21 @@ Consistent Hashing giải quyết vấn đề bằng cách băm cả Server lẫ
 
 | Các Bước Thực Hiện | Cơ Chế Hoạt Động |
 | --- | --- |
-| **Bước 1: Định vị Server** | Băm địa chỉ IP hoặc tên của Server ($S_0, S_1, S_2$) thành một số nguyên và xếp vào các vị trí tương ứng trên vòng tròn số.
-
-|
-| **Bước 2: Định vị Key** | Băm khóa dữ liệu (ví dụ: `user_id`) bằng cùng một hàm băm để xác định vị trí của nó trên cùng một vòng tròn.
-
-|
-| **Bước 3: Định tuyến Dữ liệu** | Từ vị trí của Key, quét xuôi theo **chiều kim đồng hồ** trên vòng tròn băm. Máy chủ vật lý đầu tiên gặp phải sẽ chịu trách nhiệm lưu trữ và xử lý Key đó.
-
-|
+| **Bước 1: Định vị Server** | Băm địa chỉ IP hoặc tên của Server ($S_0, S_1, S_2$) thành một số nguyên và xếp vào các vị trí tương ứng trên vòng tròn số.|
+| **Bước 2: Định vị Key** | Băm khóa dữ liệu (ví dụ: `user_id`) bằng cùng một hàm băm để xác định vị trí của nó trên cùng một vòng tròn.|
+| **Bước 3: Định tuyến Dữ liệu** | Từ vị trí của Key, quét xuôi theo **chiều kim đồng hồ** trên vòng tròn băm. Máy chủ vật lý đầu tiên gặp phải sẽ chịu trách nhiệm lưu trữ và xử lý Key đó.|
 
 **Cơ chế khi Thêm/Bớt Server:** Khi một server mới được thêm vào hoặc một server cũ bị loại bỏ, chỉ có một phần nhỏ dữ liệu nằm trong phân đoạn bị ảnh hưởng cần phải phân phối lại (xấp xỉ $1/n$ lượng dữ liệu), toàn bộ dữ liệu ở các phân đoạn khác hoàn toàn giữ nguyên.
 
 ```mermaid
 graph TD
-    subgraph Hash Ring (0 to 2^32-1)
+    subgraph "Hash Ring (0 to 2^32-1)"
         NodeA[Server A] -->|Clockwise Flow| Key1((Key 1))
         Key1 -->|Stored in| NodeB[Server B]
         NodeB -->|Clockwise Flow| Key2((Key 2))
         Key2 -->|Stored in| NodeC[Server C]
         NodeC -->|Clockwise Flow| NodeA
     end
-
 ```
 
 ### 3. Kỹ thuật Nút ảo (Virtual Nodes) để tối ưu hóa
@@ -273,7 +265,7 @@ $$W + R > N$$
 
 ```mermaid
 graph TD
-    subgraph Distributed Cluster (N=3, W=2, R=2)
+    subgraph "Distributed Cluster (N=3, W=2, R=2)"
         Node1[Server 1]
         Node2[Server 2]
         Node3[Server 3]
@@ -333,15 +325,15 @@ graph TD
 
 ```mermaid
 gantt
-    title 4-Step System Design Interview Timeline (45 Minutes)
+    title "4-Step System Design Interview Timeline (45 Minutes)"
     dateFormat  X
     axisFormat %s
     
-    Section Quy trình phỏng vấn
-    Bước 1: Understand & Establish Scope  :active, p1, 0, 5
-    Bước 2: High-level Design & Agreement :p2, after p1, 15
-    Bước 3: Design Deep Dive              :p3, after p2, 20
-    Bước 4: Wrap up & Review              :p4, after p3, 5
+    section Quy trình phỏng vấn
+    "Bước 1: Understand & Establish Scope"  :active, p1, 0, 5
+    "Bước 2: High-level Design & Agreement" :p2, after p1, 15
+    "Bước 3: Design Deep Dive"              :p3, after p2, 20
+    "Bước 4: Wrap up & Review"              :p4, after p3, 5
 
 ```
 
