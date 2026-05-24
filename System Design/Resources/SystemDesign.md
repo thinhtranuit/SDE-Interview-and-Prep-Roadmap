@@ -1,4 +1,5 @@
-```markdown
+### Nội dung tập tin `system-design-complete.md`
+
 # Tài Liệu Tổng Hợp Kiến Thức Thiết Kế Hệ Thống (System Design)
 *Dựa trên tài liệu System Design Interview của Alex Xu*
 
@@ -64,7 +65,6 @@ graph TD
         LB -->|Private IP| WS2[Web Server 2]
         LB -->|Private IP| WS3[Web Server 3]
     end
-
 ```
 
 ### 4. Tối ưu hóa hiệu năng: Cache và CDN
@@ -165,13 +165,13 @@ Consistent Hashing giải quyết vấn đề bằng cách băm cả Server lẫ
 | --- | --- |
 | **Bước 1: Định vị Server** | Băm địa chỉ IP hoặc tên của Server ($S_0, S_1, S_2$) thành một số nguyên và xếp vào các vị trí tương ứng trên vòng tròn số.
 
- |
+|
 | **Bước 2: Định vị Key** | Băm khóa dữ liệu (ví dụ: `user_id`) bằng cùng một hàm băm để xác định vị trí của nó trên cùng một vòng tròn.
 
- |
+|
 | **Bước 3: Định tuyến Dữ liệu** | Từ vị trí của Key, quét xuôi theo **chiều kim đồng hồ** trên vòng tròn băm. Máy chủ vật lý đầu tiên gặp phải sẽ chịu trách nhiệm lưu trữ và xử lý Key đó.
 
- |
+|
 
 **Cơ chế khi Thêm/Bớt Server:** Khi một server mới được thêm vào hoặc một server cũ bị loại bỏ, chỉ có một phần nhỏ dữ liệu nằm trong phân đoạn bị ảnh hưởng cần phải phân phối lại (xấp xỉ $1/n$ lượng dữ liệu), toàn bộ dữ liệu ở các phân đoạn khác hoàn toàn giữ nguyên.
 
